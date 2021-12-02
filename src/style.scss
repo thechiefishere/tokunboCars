@@ -25,11 +25,24 @@ a {
   color: #fff;
   border: none;
   border-radius: 5px;
+  padding: 8px 10px;
   box-shadow: 2px 2px 4px #555;
   &-hero {
     width: 40%;
     height: 5vh;
     margin-top: 20px;
+  }
+  &-car {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translateX(-50%);
+    display: none;
+    box-shadow: none;
+  }
+  &-submit {
+    width: 90%;
+    margin-bottom: 10px;
   }
 }
 
@@ -37,6 +50,7 @@ body {
   background-color: $primary-bg;
   position: relative;
   min-height: 100vh;
+  font-family: Arial, Helvetica, sans-serif;
 }
 
 .header {
@@ -51,18 +65,23 @@ body {
 .sidebar {
   position: absolute;
   left: 0;
-  top: 35px;
+  top: 0;
   width: 0%;
   background-color: #fff;
   overflow: hidden;
   height: 100%;
   transition: 0.5s ease-out;
+  padding-top: 35px;
   z-index: 10;
-
   &-times {
     font-size: 1.4em;
     background-color: $secondary-color;
     color: #fff;
+  }
+  &-list {
+    &-item {
+      margin: 10px 0px;
+    }
   }
 }
 
@@ -117,7 +136,7 @@ body {
 }
 
 .car {
-  margin: 15px 0px;
+  margin: 35px 0px;
   background-color: #fff;
   text-align: center;
   padding-bottom: 10px;
@@ -136,16 +155,66 @@ body {
 }
 
 .car:hover {
-  &-img {
+  .car-img-cont {
     position: relative;
   }
-  &-img::before {
-    content: "Hello";
+  .car-img-cont::before {
     position: absolute;
-    top: 0;
-    left: 0;
-    width: 100%;
+    content: "";
+    top: 0px;
+    right: 0px;
     height: 100%;
-    background-color: #333;
+    width: 100%;
+    background-color: #444;
+    border-radius: 10px 10px 0px 0px;
+    opacity: 0.3;
+  }
+  .btn-car {
+    display: block;
+  }
+}
+
+.section {
+  width: 90%;
+  margin: 60px auto;
+  text-align: center;
+  &-header {
+    font-size: 1.8em;
+    color: $primary-color;
+  }
+  &-form {
+    background-color: #fff;
+    padding: 10px;
+    border-radius: 10px;
+    margin-top: 30px;
+    box-shadow: 2px 2px 4px #777;
+    .form {
+      &-group {
+        margin: 20px;
+        text-align: left;
+        label {
+          display: block;
+          margin-bottom: 5px;
+        }
+        input {
+          border: none;
+          border-bottom: #000 1px solid;
+          width: 90%;
+          padding: 5px;
+        }
+      }
+      &-warning {
+        color: $secondary-color;
+        margin: 5px;
+        margin-top: 20px;
+      }
+    }
+  }
+}
+
+.about {
+  &-details {
+    margin-top: 25px;
+    text-align: left;
   }
 }

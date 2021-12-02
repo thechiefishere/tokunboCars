@@ -1,6 +1,7 @@
 import React from "react";
 import { useGlobalContext } from "../context";
 import { FaTimes } from "react-icons/fa";
+import { NavLink } from "react-router-dom";
 
 const Sidebar = () => {
   const { sidebar, closeSidebar } = useGlobalContext();
@@ -11,19 +12,29 @@ const Sidebar = () => {
       <h1 className="sidebar-title">Tokunbo</h1>
       <ul className="sidebar-list">
         <li className="sidebar-list-item">
-          <a href="/">Home</a>
+          <NavLink to="/" onClick={closeSidebar}>
+            Home
+          </NavLink>
         </li>
         <li className="sidebar-list-item">
-          <a href="/product">Product</a>
+          <NavLink to="/products" onClick={closeSidebar}>
+            Products
+          </NavLink>
         </li>
         <li className="sidebar-list-item">
-          <a href="/about">About</a>
+          <NavLink to="/about" onClick={closeSidebar}>
+            About
+          </NavLink>
         </li>
         <li className="sidebar-list-item">
-          <a href="/signup">Signup</a>
+          <NavLink to="/signup" onClick={closeSidebar}>
+            Signup
+          </NavLink>
         </li>
         <li className="sidebar-list-item">
-          <a href="/login">Login</a>
+          <NavLink to="/login" onClick={closeSidebar}>
+            Login
+          </NavLink>
         </li>
       </ul>
     </nav>
