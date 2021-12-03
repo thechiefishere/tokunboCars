@@ -195,6 +195,7 @@ body {
         label {
           display: block;
           margin-bottom: 5px;
+          color: $primary-color;
         }
         input {
           border: none;
@@ -208,6 +209,10 @@ body {
         margin: 5px;
         margin-top: 20px;
       }
+      &-link {
+        color: $primary-color;
+        text-decoration: underline;
+      }
     }
   }
 }
@@ -217,4 +222,9 @@ body {
     margin-top: 25px;
     text-align: left;
   }
+}
+
+.loading {
+  width: 10%;
+  margin: 0px auto;
 }

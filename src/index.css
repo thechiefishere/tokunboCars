@@ -185,6 +185,7 @@ body {
 .section-form .form-group label {
   display: block;
   margin-bottom: 5px;
+  color: #360353;
 }
 .section-form .form-group input {
   border: none;
@@ -197,10 +198,19 @@ body {
   margin: 5px;
   margin-top: 20px;
 }
+.section-form .form-link {
+  color: #360353;
+  text-decoration: underline;
+}
 
 .about-details {
   margin-top: 25px;
   text-align: left;
+}
+
+.loading {
+  width: 10%;
+  margin: 0px auto;
 }
 
 /*# sourceMappingURL=index.css.map */

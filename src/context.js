@@ -6,6 +6,8 @@ const AppProvider = ({ children }) => {
   const [sidebar, setSidebar] = useState(false);
   const [cars, setCars] = useState([]);
   const [loading, setLoading] = useState(true);
+  const [loggedIn, setLoggedIn] = useState(false);
+  const [loadingLogin, setLoadingLogin] = useState(false);
 
   const openSidebar = () => {
     setSidebar(true);
@@ -19,8 +21,28 @@ const AppProvider = ({ children }) => {
     setLoading(true);
     const response = await fetch("https://buy-tokunbo-cars.herokuapp.com/cars");
     const data = await response.json();
-    setCars(data);
+    setCars(data.cars);
     setLoading(false);
+  };
+
+  const logOut = async () => {
+    const token = localStorage.getItem("token");
+    const response = await fetch(
+      "https://buy-tokunbo-cars.herokuapp.com/authenticate/logout",
+      {
+        method: "DELETE",
+        headers: {
+          "Content-Type": "application/json",
+          authorization: "Bearer " + token,
+        },
+      }
+    );
+    const data = await response.json();
+    const { status } = data;
+    if (status === "success") {
+      setLoggedIn(false);
+    }
+    closeSidebar();
   };
 
   useEffect(() => {
@@ -29,7 +51,18 @@ const AppProvider = ({ children }) => {
 
   return (
     <AppContext.Provider
-      value={{ sidebar, openSidebar, closeSidebar, cars, loading }}
+      value={{
+        sidebar,
+        openSidebar,
+        closeSidebar,
+        cars,
+        loading,
+        loggedIn,
+        setLoggedIn,
+        logOut,
+        loadingLogin,
+        setLoadingLogin,
+      }}
     >
       {children}
     </AppContext.Provider>
