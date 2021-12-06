@@ -6,7 +6,13 @@ import Loading from "./Loading";
 const Login = () => {
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
-  const { setLoggedIn, loadingLogin, setLoadingLogin } = useGlobalContext();
+  const {
+    setLoggedIn,
+    loadingLogin,
+    setLoadingLogin,
+    setUserDetails,
+    setAddingToCart,
+  } = useGlobalContext();
   const navigate = useNavigate();
 
   const loginUser = async (e) => {
@@ -28,14 +34,16 @@ const Login = () => {
         }
       );
       const data = await response.json();
-      const { status } = data;
+      const { status, userDetails, token } = data;
       if (status === "success") {
-        localStorage.setItem("token", data.token);
+        localStorage.setItem("tokunbo-token", token);
         setLoggedIn(true);
+        setUserDetails(userDetails);
         setEmail("");
         setPassword("");
         navigate("/");
         setLoadingLogin(false);
+        setAddingToCart(true);
       }
     } catch (error) {
       console.log(error);

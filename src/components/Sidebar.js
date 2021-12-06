@@ -11,6 +11,13 @@ const Sidebar = () => {
       <FaTimes className="sidebar-times" onClick={closeSidebar} />
       <h1 className="sidebar-title">Tokunbo</h1>
       <ul className="sidebar-list">
+        {loggedIn && (
+          <li className="sidebar-list-item">
+            <NavLink to="/profile" onClick={closeSidebar}>
+              Profile
+            </NavLink>
+          </li>
+        )}
         <li className="sidebar-list-item">
           <NavLink to="/" onClick={closeSidebar}>
             Home

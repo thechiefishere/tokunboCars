@@ -2,7 +2,7 @@
   margin: 0;
   padding: 0;
   box-sizing: border-box;
-  line-height: 1.5;
+  line-height: 1.7;
 }
 
 ul {
@@ -40,6 +40,20 @@ a {
   width: 90%;
   margin-bottom: 10px;
 }
+.btn-link {
+  color: #fff;
+}
+.btn-details {
+  margin-bottom: 20px;
+}
+.btn-add-to-cart {
+  width: 100%;
+  margin: 20px auto;
+}
+
+.btn:hover {
+  background-color: #b542f8;
+}
 
 body {
   background-color: #f0edf1;
@@ -55,6 +69,16 @@ body {
   padding: 15px 30px;
   font-size: 1.5em;
   background-color: #fff;
+}
+.header-cart {
+  position: relative;
+}
+.header-cart-val {
+  position: absolute;
+  top: -15px;
+  right: -8px;
+  font-size: 0.9em;
+  color: #b542f8;
 }
 
 .sidebar {
@@ -211,6 +235,97 @@ body {
 .loading {
   width: 10%;
   margin: 0px auto;
+}
+
+.profile {
+  background-color: #fff;
+  border-radius: 5px;
+  box-shadow: 2px 2px 4px #777;
+  padding: 15px 0px;
+}
+.profile-logo {
+  font-size: 5em;
+  color: #b542f8;
+}
+.profile-name {
+  color: #b542f8;
+  font-size: 1.7em;
+}
+.profile-orders {
+  color: #ff5100;
+  margin-top: 60px;
+}
+.profile-orders div {
+  margin: 25px 0px;
+}
+.profile-orders div h4 {
+  color: #b542f8;
+}
+
+.details {
+  width: 90%;
+  margin: 50px auto;
+}
+.details img {
+  width: 100%;
+}
+.details-article {
+  text-align: left;
+}
+.details-article-name {
+  font-size: 2.2em;
+}
+.details-article-price {
+  font-size: 1.8em;
+}
+
+.orderpage {
+  position: fixed;
+  top: 0px;
+  right: 0px;
+  height: 100vh;
+  width: 0px;
+  overflow-x: hidden;
+  background-color: #f5efed;
+  transition: 0.5s ease-out;
+  z-index: 100;
+}
+.orderpage-heading {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  width: 90%;
+  margin: 0 auto;
+  font-size: 2em;
+  margin-top: 20px;
+}
+.orderpage-times {
+  color: #ff5100;
+}
+.orderpage-title {
+  flex-grow: 1;
+  margin-left: 38%;
+}
+
+.show-orderpage {
+  width: 100%;
+}
+
+.cartitem {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin: 20px 0px;
+  padding: 20px;
+}
+.cartitem img {
+  width: 25%;
+  border-radius: 20px;
+}
+.cartitem-details {
+  flex: 1;
+  text-align: left;
+  margin-left: 15px;
 }
 
 /*# sourceMappingURL=index.css.map */

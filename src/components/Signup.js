@@ -8,7 +8,7 @@ const Signup = () => {
   const [lastName, setLastName] = useState("");
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
-  const { setLoggedIn, loadingLogin } = useGlobalContext();
+  const { setLoggedIn, loadingLogin, setUserDetails } = useGlobalContext();
   const navigate = useNavigate();
 
   const addUser = async (e) => {
@@ -30,10 +30,11 @@ const Signup = () => {
         }
       );
       const data = await response.json();
-      const { status } = data;
+      const { status, userDetails, token } = data;
       if (status === "success") {
-        localStorage.setItem("token", data.token);
+        localStorage.setItem("tokunbo-token", token);
         setLoggedIn(true);
+        setUserDetails(userDetails);
         setFirstName("");
         setLastName("");
         setEmail("");
