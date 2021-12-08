@@ -12,6 +12,9 @@ const AppProvider = ({ children }) => {
   const [cartItems, setCartItems] = useState([]);
   const [showOrderPage, setShowOrderPage] = useState(false);
   const [addingToCart, setAddingToCart] = useState(false);
+  const [cartsTotal, setCartsTotal] = useState(0);
+  const [modalContent, setModalContent] = useState({});
+  const [showModal, setShowModal] = useState(false);
 
   const openSidebar = () => {
     setSidebar(true);
@@ -83,7 +86,11 @@ const AppProvider = ({ children }) => {
       const { status } = data;
       if (status === "success") {
         localStorage.removeItem("tokunbo-token");
+        setShowModal(true);
+        setModalContent({ type: 1, text: "Bye, hope to see you soon." });
         setLoggedIn(false);
+        setCartItems([]);
+        setUserDetails([]);
       }
     } catch (error) {
       console.log(error);
@@ -94,6 +101,8 @@ const AppProvider = ({ children }) => {
   useEffect(() => {
     fetchData();
     verifyToken();
+
+    //eslint-disable-next-line
   }, []);
 
   useEffect(() => {
@@ -131,7 +140,109 @@ const AppProvider = ({ children }) => {
       }
       fetchData();
     }
+
+    //eslint-disable-next-line
   }, [cartItems, loggedIn]);
+
+  useEffect(() => {
+    total();
+    //eslint-disable-next-line
+  }, [cartItems]);
+
+  const removeFromCart = async (carId) => {
+    if (!loggedIn) {
+      const carsId = cartItems.filter((id) => {
+        return id !== carId;
+      });
+
+      setCartItems([...carsId]);
+      return;
+    }
+    const token = localStorage.getItem("tokunbo-token");
+    try {
+      const response = await fetch(
+        "https://buy-tokunbo-cars.herokuapp.com/authenticate/user/cart",
+        {
+          method: "DELETE",
+          body: JSON.stringify({
+            car: carId,
+          }),
+          headers: {
+            "content-type": "application/json",
+            authorization: "Bearer " + token,
+          },
+        }
+      );
+      const data = await response.json();
+      const { status, userDetails } = data;
+      if (status === "success") {
+        setUserDetails(userDetails);
+        const carsId = userDetails.carsInCart.map((car) => {
+          return car._id.toString();
+        });
+        setCartItems([...carsId]);
+      }
+    } catch (error) {
+      console.log(error);
+    }
+  };
+
+  const total = () => {
+    let allPrices = [];
+    for (let i = 0; i < cartItems.length; i++) {
+      const item = cartItems[i];
+      for (let j = 0; j < cars.length; j++) {
+        const car = cars[j];
+        if (car._id.toString() === item) {
+          allPrices.push(Number(car.price.split(",").join("")));
+        }
+      }
+    }
+    const total = allPrices.reduce((sum, curr) => {
+      return (sum += curr);
+    }, 0);
+
+    setCartsTotal(total);
+  };
+
+  const placeOrder = async () => {
+    const token = localStorage.getItem("tokunbo-token");
+    setShowModal(true);
+    setModalContent({ type: 1, text: "Complementing Order... please wait" });
+    try {
+      const response = await fetch(
+        "https://buy-tokunbo-cars.herokuapp.com/authenticate/user/pending-cars",
+        {
+          method: "PATCH",
+          headers: {
+            "content-type": "application/json",
+            authorization: "Bearer " + token,
+          },
+          body: JSON.stringify({
+            pendingCars: [...cartItems],
+          }),
+        }
+      );
+      const data = await response.json();
+      const { status, userDetails } = data;
+      if (status === "success") {
+        setShowModal(true);
+        setModalContent({ type: 1, text: "Order Completed" });
+        setUserDetails(userDetails);
+        const carsId = userDetails.carsInCart.map((car) => {
+          return car._id.toString();
+        });
+        setCartItems([...carsId]);
+      }
+    } catch (error) {
+      console.log(error);
+      setShowModal(true);
+      setModalContent({
+        type: 0,
+        text: "Something went wrong, try again later...",
+      });
+    }
+  };
 
   return (
     <AppContext.Provider
@@ -149,9 +260,18 @@ const AppProvider = ({ children }) => {
         userDetails,
         setUserDetails,
         addToCart,
+        removeFromCart,
         cartItems,
+        setCartItems,
         showOrderPage,
         setShowOrderPage,
+        setAddingToCart,
+        cartsTotal,
+        modalContent,
+        setModalContent,
+        showModal,
+        setShowModal,
+        placeOrder,
       }}
     >
       {children}

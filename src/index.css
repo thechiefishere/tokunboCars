@@ -14,6 +14,12 @@ a {
   color: #000;
 }
 
+input[type=number]::-webkit-inner-spin-button,
+input[type=number]::-webkit-outer-spin-button {
+  -webkit-appearance: none;
+  margin: 0;
+}
+
 .btn {
   display: inline-block;
   background-color: #360353;
@@ -42,6 +48,8 @@ a {
 }
 .btn-link {
   color: #fff;
+  display: inline-block;
+  width: 100%;
 }
 .btn-details {
   margin-bottom: 20px;
@@ -202,27 +210,45 @@ body {
   margin-top: 30px;
   box-shadow: 2px 2px 4px #777;
 }
-.section-form .form-group {
+
+.form-group {
   margin: 20px;
   text-align: left;
 }
-.section-form .form-group label {
+.form-group label {
   display: block;
-  margin-bottom: 5px;
   color: #360353;
 }
-.section-form .form-group input {
+.form-group input {
   border: none;
   border-bottom: #000 1px solid;
   width: 90%;
-  padding: 5px;
+  padding: 2px;
 }
-.section-form .form-warning {
+.form-group #name {
+  width: 98%;
+}
+.form-group #card-num {
+  width: 60%;
+}
+.form-group #month,
+.form-group #year {
+  width: 11%;
+}
+.form-group #cvc {
+  width: 12%;
+}
+.form-details {
+  text-align: left;
+  margin-left: 20px;
+  color: #360353;
+}
+.form-warning {
   color: #ff5100;
   margin: 5px;
   margin-top: 20px;
 }
-.section-form .form-link {
+.form-link {
   color: #360353;
   text-decoration: underline;
 }
@@ -306,6 +332,11 @@ body {
   flex-grow: 1;
   margin-left: 38%;
 }
+.orderpage-checkout {
+  width: 100%;
+  margin-left: 5%;
+  margin-right: 5%;
+}
 
 .show-orderpage {
   width: 100%;
@@ -326,6 +357,36 @@ body {
   flex: 1;
   text-align: left;
   margin-left: 15px;
+}
+
+.modal {
+  position: absolute;
+  top: 0px;
+  left: 50%;
+  transform: translate(-50%);
+  height: 0px;
+  overflow: hidden;
+  color: #fff;
+  width: 250px;
+  transition: 0.5s ease-in-out;
+  text-align: center;
+  z-index: 50;
+}
+.modal-success {
+  background-color: #360353;
+}
+.modal-fail {
+  background-color: red;
+}
+
+.show-modal {
+  height: 40vh;
+  top: 30vh;
+}
+
+.link {
+  color: #ff5100;
+  font-style: italic;
 }
 
 /*# sourceMappingURL=index.css.map */

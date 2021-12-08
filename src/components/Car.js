@@ -16,7 +16,7 @@ const Car = ({ car }) => {
       </div>
       <div className="car-detail">
         <p>{name}</p>
-        <p>N{price}</p>
+        <p>${price}</p>
       </div>
     </article>
   );

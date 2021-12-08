@@ -7,8 +7,10 @@ import Login from "./components/Login";
 import Signup from "./components/Signup";
 import Profile from "./components/Profile";
 import CarDetails from "./components/CarDetails";
+import Checkout from "./components/Checkout";
 import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
 import OrderPage from "./components/OrderPage";
+import Modal from "./components/Modal";
 
 function App() {
   return (
@@ -17,6 +19,7 @@ function App() {
         <main>
           <Header />
           <OrderPage />
+          <Modal />
           <Routes>
             <Route path="/" element={<Home />} />
             <Route path="/products" element={<Products />} />
@@ -25,6 +28,7 @@ function App() {
             <Route path="/about" element={<About />} />
             <Route path="/login" element={<Login />} />
             <Route path="/signup" element={<Signup />} />
+            <Route path="/checkout" element={<Checkout />} />
           </Routes>
         </main>
       </Router>

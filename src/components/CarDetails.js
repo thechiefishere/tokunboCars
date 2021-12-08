@@ -24,6 +24,8 @@ const CarDetails = () => {
 
   useEffect(() => {
     fetchCar();
+
+    //eslint-disable-next-line
   }, []);
   const { name, image, price } = car;
 

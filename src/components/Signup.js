@@ -8,7 +8,14 @@ const Signup = () => {
   const [lastName, setLastName] = useState("");
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
-  const { setLoggedIn, loadingLogin, setUserDetails } = useGlobalContext();
+  const {
+    setLoggedIn,
+    loadingLogin,
+    setShowModal,
+    setModalContent,
+    setUserDetails,
+    setAddingToCart,
+  } = useGlobalContext();
   const navigate = useNavigate();
 
   const addUser = async (e) => {
@@ -34,15 +41,26 @@ const Signup = () => {
       if (status === "success") {
         localStorage.setItem("tokunbo-token", token);
         setLoggedIn(true);
+        setAddingToCart(true);
         setUserDetails(userDetails);
         setFirstName("");
         setLastName("");
         setEmail("");
         setPassword("");
         navigate("/");
+        setShowModal(true);
+        setModalContent({
+          type: 1,
+          text: "You have been successfully registered",
+        });
       }
     } catch (error) {
       console.log(error);
+      setShowModal(true);
+      setModalContent({
+        type: 1,
+        text: "Something went wrong, please try again later...",
+      });
     }
   };
 

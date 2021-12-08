@@ -12,6 +12,9 @@ const Login = () => {
     setLoadingLogin,
     setUserDetails,
     setAddingToCart,
+    setModalContent,
+    setShowModal,
+    setCartItems,
   } = useGlobalContext();
   const navigate = useNavigate();
 
@@ -19,6 +22,8 @@ const Login = () => {
     e.preventDefault();
     setLoggedIn(false);
     setLoadingLogin(true);
+    setShowModal(true);
+    setModalContent({ type: 1, text: "Loading Data... please wait" });
     try {
       const response = await fetch(
         "https://buy-tokunbo-cars.herokuapp.com/authenticate/login",
@@ -43,11 +48,25 @@ const Login = () => {
         setPassword("");
         navigate("/");
         setLoadingLogin(false);
+        const carsId = userDetails.carsInCart.map((car) => {
+          return car._id.toString();
+        });
+        setCartItems([...carsId]);
         setAddingToCart(true);
+        setShowModal(true);
+        setModalContent({
+          type: 1,
+          text: `Welcome back ${userDetails.firstName}`,
+        });
       }
     } catch (error) {
       console.log(error);
       setLoadingLogin(false);
+      setShowModal(true);
+      setModalContent({
+        type: 0,
+        text: "Failed to load data. Please try again later...",
+      });
     }
   };
 

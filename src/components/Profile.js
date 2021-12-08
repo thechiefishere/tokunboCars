@@ -1,29 +1,52 @@
-import React from "react";
+import React, { useEffect } from "react";
 import { CgProfile } from "react-icons/cg";
 import { useGlobalContext } from "../context";
 import { Link } from "react-router-dom";
 
 const Profile = () => {
-  const {
-    userDetails: {
-      firstName,
-      lastName,
-      carsInCart,
-      pendingCars,
-      deliveredCars,
-    },
-    loggedIn,
-  } = useGlobalContext();
+  const { setUserDetails, userDetails, loggedIn } = useGlobalContext();
+
+  useEffect(() => {
+    async function getSingleUser() {
+      const token = localStorage.getItem("tokunbo-token");
+      try {
+        const response = await fetch(
+          "https://buy-tokunbo-cars.herokuapp.com/authenticate/user",
+          {
+            headers: {
+              authorization: "Bearer " + token,
+            },
+          }
+        );
+        const data = await response.json();
+        const { status, userDetails } = data;
+        if (status === "success") {
+          setUserDetails(userDetails);
+        }
+      } catch (error) {
+        console.log("error");
+      }
+    }
+
+    getSingleUser();
+  }, []);
 
   if (!loggedIn) {
     return (
-      <section>
-        <Link to="/signup">Sign Up</Link>
-        OR
-        <Link to="/login">Log in</Link>
+      <section className="section profile">
+        <h1 className="section-header">Profile</h1>
+        <h2>
+          Please kindly{" "}
+          <Link className="link" to="/login">
+            Login
+          </Link>
+        </h2>
       </section>
     );
   }
+
+  const { firstName, lastName, carsInCart, pendingCars, deliveredCars } =
+    userDetails;
 
   return (
     <section className="section profile">

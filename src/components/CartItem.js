@@ -1,7 +1,10 @@
 import React, { useEffect, useState } from "react";
+import { useGlobalContext } from "../context";
 
 const CartItem = ({ carId }) => {
   const [car, setCar] = useState("");
+  const { removeFromCart } = useGlobalContext();
+
   const fetchCar = async () => {
     try {
       const response = await fetch(
@@ -18,7 +21,10 @@ const CartItem = ({ carId }) => {
   };
   useEffect(() => {
     fetchCar();
+
+    //eslint-disable-next-line
   }, []);
+
   const { image, name, price } = car;
 
   return (
@@ -28,7 +34,14 @@ const CartItem = ({ carId }) => {
         <h3>{name}</h3>
         <h5>${price}</h5>
       </div>
-      <button className="btn">Remove</button>
+      <button
+        onClick={() => {
+          removeFromCart(carId);
+        }}
+        className="btn"
+      >
+        Remove
+      </button>
     </section>
   );
 };

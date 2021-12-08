@@ -20,6 +20,12 @@ a {
   color: #000;
 }
 
+input[type="number"]::-webkit-inner-spin-button,
+input[type="number"]::-webkit-outer-spin-button {
+  -webkit-appearance: none;
+  margin: 0;
+}
+
 .btn {
   display: inline-block;
   background-color: $primary-color;
@@ -47,6 +53,8 @@ a {
   }
   &-link {
     color: #fff;
+    display: inline-block;
+    width: 100%;
   }
   &-details {
     margin-bottom: 20px;
@@ -213,32 +221,52 @@ body {
     border-radius: 10px;
     margin-top: 30px;
     box-shadow: 2px 2px 4px #777;
-    .form {
-      &-group {
-        margin: 20px;
-        text-align: left;
-        label {
-          display: block;
-          margin-bottom: 5px;
-          color: $primary-color;
-        }
-        input {
-          border: none;
-          border-bottom: #000 1px solid;
-          width: 90%;
-          padding: 5px;
-        }
-      }
-      &-warning {
-        color: $secondary-color;
-        margin: 5px;
-        margin-top: 20px;
-      }
-      &-link {
-        color: $primary-color;
-        text-decoration: underline;
-      }
+  }
+}
+
+.form {
+  &-group {
+    margin: 20px;
+    text-align: left;
+    label {
+      display: block;
+      // margin-bottom: 1px;
+      color: $primary-color;
     }
+    input {
+      border: none;
+      border-bottom: #000 1px solid;
+      width: 90%;
+      padding: 2px;
+    }
+    #name {
+      width: 98%;
+    }
+    #card-num {
+      width: 60%;
+    }
+    #month,
+    #year {
+      width: 11%;
+    }
+    #cvc {
+      width: 12%;
+    }
+  }
+
+  &-details {
+    text-align: left;
+    margin-left: 20px;
+    color: $primary-color;
+  }
+  &-warning {
+    color: $secondary-color;
+    margin: 5px;
+    margin-top: 20px;
+  }
+  &-link {
+    color: $primary-color;
+    text-decoration: underline;
   }
 }
 
@@ -323,6 +351,12 @@ body {
     flex-grow: 1;
     margin-left: 38%;
   }
+  &-checkout {
+    width: 100%;
+    // margin: 0px auto;
+    margin-left: 5%;
+    margin-right: 5%;
+  }
 }
 .show-orderpage {
   width: 100%;
@@ -343,4 +377,33 @@ body {
     text-align: left;
     margin-left: 15px;
   }
+}
+
+.modal {
+  position: absolute;
+  top: 0px;
+  left: 50%;
+  transform: translate(-50%);
+  height: 0px;
+  overflow: hidden;
+  color: #fff;
+  width: 250px;
+  transition: 0.5s ease-in-out;
+  text-align: center;
+  z-index: 50;
+  &-success {
+    background-color: $primary-color;
+  }
+  &-fail {
+    background-color: red;
+  }
+}
+.show-modal {
+  height: 40vh;
+  top: 30vh;
+}
+
+.link {
+  color: $secondary-color;
+  font-style: italic;
 }
