@@ -154,19 +154,22 @@ body {
 }
 .home-products-title {
   margin-top: 35px;
+  margin-bottom: 35px;
   font-size: 2em;
 }
 
 .car {
-  margin: 35px 0px;
   background-color: #fff;
   text-align: center;
   padding-bottom: 10px;
   border-radius: 10px;
   box-shadow: 2px 2px 4px #777;
+  width: 80vw;
+  margin: 35px auto;
 }
 .car-img {
   width: 100%;
+  height: 50vw;
   border-radius: 10px 10px 0px 0px;
 }
 .car-detail {
@@ -192,6 +195,18 @@ body {
 }
 .car:hover .btn-car {
   display: block;
+}
+
+.products {
+  width: 90%;
+  margin: 0 auto;
+  text-align: center;
+}
+.products-header {
+  font-size: 1.8em;
+  color: #360353;
+  margin-top: 65px;
+  margin-bottom: 15px;
 }
 
 .section {
@@ -270,12 +285,12 @@ body {
   padding: 15px 0px;
 }
 .profile-logo {
-  font-size: 5em;
+  font-size: 9em;
   color: #b542f8;
 }
 .profile-name {
   color: #b542f8;
-  font-size: 1.7em;
+  font-size: 2.5em;
 }
 .profile-orders {
   color: #ff5100;
@@ -284,8 +299,12 @@ body {
 .profile-orders div {
   margin: 25px 0px;
 }
+.profile-orders div h3 {
+  font-size: 1.8em;
+}
 .profile-orders div h4 {
   color: #b542f8;
+  font-size: 1.1em;
 }
 
 .details {
@@ -294,6 +313,9 @@ body {
 }
 .details img {
   width: 100%;
+}
+.details-cont {
+  margin-top: 20px;
 }
 .details-article {
   text-align: left;
@@ -312,30 +334,53 @@ body {
   height: 100vh;
   width: 0px;
   overflow-x: hidden;
-  background-color: #f5efed;
   transition: 0.5s ease-out;
-  z-index: 100;
+  z-index: 10;
+  display: flex;
+}
+.orderpage-bg {
+  background-color: #444;
+  width: 0%;
+  height: 100vh;
+  overflow: hidden;
+  opacity: 0.3;
+}
+.orderpage-details {
+  background-color: #f5efed;
+  height: 100vh;
+  width: 100%;
+}
+.orderpage-container {
+  width: 90%;
+  margin: 0 auto;
+  padding: 10px;
+  z-index: 50;
 }
 .orderpage-heading {
   display: flex;
   align-items: center;
   justify-content: space-between;
-  width: 90%;
   margin: 0 auto;
   font-size: 2em;
   margin-top: 20px;
+  text-align: center;
 }
 .orderpage-times {
   color: #ff5100;
 }
 .orderpage-title {
   flex-grow: 1;
-  margin-left: 38%;
 }
 .orderpage-checkout {
   width: 100%;
-  margin-left: 5%;
-  margin-right: 5%;
+  margin-top: 60vh;
+}
+.orderpage-checkout-total {
+  font-size: 1.6em;
+}
+.orderpage-empty {
+  text-align: center;
+  margin-top: 20px;
 }
 
 .show-orderpage {
@@ -347,7 +392,7 @@ body {
   justify-content: space-between;
   align-items: center;
   margin: 20px 0px;
-  padding: 20px;
+  padding: 10px;
 }
 .cartitem img {
   width: 25%;
@@ -387,6 +432,98 @@ body {
 .link {
   color: #ff5100;
   font-style: italic;
+}
+
+@media (min-width: 622px) {
+  .home .home-products-cars {
+    display: flex;
+    justify-content: space-between;
+    flex-wrap: wrap;
+  }
+
+  .car {
+    width: 45%;
+    margin-left: 0px;
+    margin-right: 0px;
+    margin-top: 20px;
+  }
+  .car-img {
+    height: 30vw;
+  }
+
+  .products {
+    width: 85%;
+  }
+  .products .products-list {
+    display: flex;
+    justify-content: space-between;
+    flex-wrap: wrap;
+  }
+
+  .section {
+    width: 85%;
+  }
+
+  .orderpage-container {
+    width: 85%;
+  }
+}
+@media (min-width: 768px) {
+  .orderpage-bg {
+    flex: 1;
+  }
+  .orderpage-details {
+    width: 480px;
+  }
+}
+@media (min-width: 950px) {
+  .car {
+    width: 31%;
+  }
+  .car-img {
+    height: 23vw;
+  }
+
+  .section {
+    width: 55%;
+  }
+
+  .orderpage-container {
+    width: 85%;
+  }
+}
+@media (min-width: 992px) {
+  .details {
+    width: 90%;
+  }
+  .details-cont {
+    display: flex;
+    justify-content: space-between;
+  }
+  .details-cont img {
+    width: 47%;
+    height: 50vh;
+    border-radius: 5px;
+  }
+  .details-cont .details-article {
+    margin-left: 20px;
+  }
+}
+@media (min-width: 1280px) {
+  .car {
+    width: 23%;
+  }
+  .car-img {
+    height: 19vw;
+  }
+
+  .section {
+    width: 40%;
+  }
+
+  .details {
+    width: 75%;
+  }
 }
 
 /*# sourceMappingURL=index.css.map */

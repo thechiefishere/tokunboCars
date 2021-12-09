@@ -10,8 +10,8 @@ const Products = () => {
   }
 
   return (
-    <section className="section products">
-      <h1 className="section-header">Our Products</h1>
+    <section className="products">
+      <h1 className="products-header">Our Products</h1>
       <article className="products-list">
         {cars.map((car) => {
           return <Car key={car._id} car={car} />;
