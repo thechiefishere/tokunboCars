@@ -5,7 +5,14 @@ import { FaCreditCard } from "react-icons/fa";
 import { Link, useNavigate } from "react-router-dom";
 
 const Checkout = () => {
-  const { loadingLogin, cartsTotal, loggedIn, placeOrder } = useGlobalContext();
+  const {
+    loadingLogin,
+    cartsTotal,
+    loggedIn,
+    placeOrder,
+    setShowModal,
+    setModalContent,
+  } = useGlobalContext();
   const [cardHolder, setCardHolder] = useState("");
   const [cardNum, setCardNum] = useState("");
   const [month, setMonth] = useState("");
@@ -33,6 +40,9 @@ const Checkout = () => {
     if (valid) {
       placeOrder();
       navigate("/");
+    } else {
+      setShowModal(true);
+      setModalContent({ type: 0, text: "Please fill the fields correctly..." });
     }
   };
 
@@ -54,7 +64,7 @@ const Checkout = () => {
       <article className="section-form">
         <form className="form" onSubmit={submitOrder}>
           <div className="form-details">
-            <h2 className="form-total">Order Total: ${cartsTotal}</h2>
+            <h2 className="form-total">Order Total: N{cartsTotal}</h2>
             <h4>Credit Or Debit Card</h4>
             <p>Test Using Credit Card 4242 4242 4242 4242</p>
             <p>Enter Any 3 Digits For The CVC</p>

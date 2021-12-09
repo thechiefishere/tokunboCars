@@ -123,6 +123,48 @@ body {
   padding-left: 25px;
 }
 
+.navbar {
+  display: none;
+
+  &-list {
+    display: flex;
+    justify-content: space-between;
+    &-item {
+      margin-left: 20px;
+      .navlink {
+        padding: 2px 7px;
+      }
+      .navlink:hover {
+        color: $primary-light;
+      }
+    }
+  }
+}
+
+.navbaruser {
+  display: none;
+  justify-self: flex-end;
+  margin-left: 80px;
+  &-list {
+    display: flex;
+    justify-content: space-between;
+    &-item {
+      margin-left: 20px;
+      .navlink {
+        padding: 2px 7px;
+      }
+      .navlink:hover {
+        color: $primary-light;
+      }
+      .signup {
+        background-color: #333;
+        border-radius: 5px;
+        color: #fff;
+      }
+    }
+  }
+}
+
 .hero {
   position: relative;
   z-index: 1;
@@ -391,14 +433,18 @@ body {
   }
   &-checkout {
     width: 100%;
-    margin-top: 60vh;
+    margin-top: 15vh;
     &-total {
       font-size: 1.6em;
+      text-align: center;
     }
   }
   &-empty {
     text-align: center;
     margin-top: 20px;
+  }
+  &-login {
+    text-align: center;
   }
 }
 .show-orderpage {
@@ -517,6 +563,26 @@ body {
 }
 
 @media (min-width: 992px) {
+  .header {
+    &-bars {
+      display: none;
+    }
+  }
+  .sidebar {
+    display: none;
+  }
+  .navbar {
+    display: block;
+  }
+  .navbaruser {
+    display: block;
+  }
+  .active {
+    background-color: #fff;
+    border-radius: 5px;
+    box-shadow: 2px 2px 4px #777;
+  }
+
   .details {
     width: 90%;
     &-cont {

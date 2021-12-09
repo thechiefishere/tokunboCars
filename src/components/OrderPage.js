@@ -29,7 +29,7 @@ const OrderPage = () => {
           </article>
           {cartItems.length > 0 ? (
             <article className="orderpage-checkout">
-              <h1 className="orderpage-checkout-total">Total: ${cartsTotal}</h1>
+              <h1 className="orderpage-checkout-total">Total: N{cartsTotal}</h1>
               {loggedIn ? (
                 <button
                   onClick={() => {
@@ -42,7 +42,13 @@ const OrderPage = () => {
                   </Link>
                 </button>
               ) : (
-                <h3>Please log in to checkout</h3>
+                <h3 className="orderpage-login">
+                  Please{" "}
+                  <Link className="link" to="/login">
+                    Login
+                  </Link>{" "}
+                  to checkout
+                </h3>
               )}
             </article>
           ) : (

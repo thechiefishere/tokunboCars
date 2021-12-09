@@ -5,22 +5,29 @@ const CartItem = ({ carId }) => {
   const [car, setCar] = useState("");
   const { removeFromCart } = useGlobalContext();
 
-  const fetchCar = async () => {
-    try {
-      const response = await fetch(
-        `https://buy-tokunbo-cars.herokuapp.com/cars/${carId}`
-      );
-      const data = await response.json();
-      const { status, car } = data;
-      if (status === "success") {
-        setCar(car);
-      }
-    } catch (error) {
-      console.log(error);
-    }
-  };
   useEffect(() => {
+    let isMounted = true;
     fetchCar();
+    return () => {
+      isMounted = false;
+    };
+
+    async function fetchCar() {
+      try {
+        const response = await fetch(
+          `https://buy-tokunbo-cars.herokuapp.com/cars/${carId}`
+        );
+        const data = await response.json();
+        const { status, car } = data;
+        if (status === "success") {
+          if (isMounted) {
+            setCar(car);
+          }
+        }
+      } catch (error) {
+        console.log(error);
+      }
+    }
 
     //eslint-disable-next-line
   }, []);
@@ -32,7 +39,7 @@ const CartItem = ({ carId }) => {
       <img src={image} alt={name} />
       <div className="cartitem-details">
         <h3>{name}</h3>
-        <h5>${price}</h5>
+        <h5>N{price}</h5>
       </div>
       <button
         onClick={() => {

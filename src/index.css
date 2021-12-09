@@ -115,6 +115,47 @@ body {
   padding-left: 25px;
 }
 
+.navbar {
+  display: none;
+}
+.navbar-list {
+  display: flex;
+  justify-content: space-between;
+}
+.navbar-list-item {
+  margin-left: 20px;
+}
+.navbar-list-item .navlink {
+  padding: 2px 7px;
+}
+.navbar-list-item .navlink:hover {
+  color: #b542f8;
+}
+
+.navbaruser {
+  display: none;
+  justify-self: flex-end;
+  margin-left: 80px;
+}
+.navbaruser-list {
+  display: flex;
+  justify-content: space-between;
+}
+.navbaruser-list-item {
+  margin-left: 20px;
+}
+.navbaruser-list-item .navlink {
+  padding: 2px 7px;
+}
+.navbaruser-list-item .navlink:hover {
+  color: #b542f8;
+}
+.navbaruser-list-item .signup {
+  background-color: #333;
+  border-radius: 5px;
+  color: #fff;
+}
+
 .hero {
   position: relative;
   z-index: 1;
@@ -373,14 +414,18 @@ body {
 }
 .orderpage-checkout {
   width: 100%;
-  margin-top: 60vh;
+  margin-top: 15vh;
 }
 .orderpage-checkout-total {
   font-size: 1.6em;
+  text-align: center;
 }
 .orderpage-empty {
   text-align: center;
   margin-top: 20px;
+}
+.orderpage-login {
+  text-align: center;
 }
 
 .show-orderpage {
@@ -493,6 +538,28 @@ body {
   }
 }
 @media (min-width: 992px) {
+  .header-bars {
+    display: none;
+  }
+
+  .sidebar {
+    display: none;
+  }
+
+  .navbar {
+    display: block;
+  }
+
+  .navbaruser {
+    display: block;
+  }
+
+  .active {
+    background-color: #fff;
+    border-radius: 5px;
+    box-shadow: 2px 2px 4px #777;
+  }
+
   .details {
     width: 90%;
   }

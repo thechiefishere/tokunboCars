@@ -201,8 +201,8 @@ const AppProvider = ({ children }) => {
     const total = allPrices.reduce((sum, curr) => {
       return (sum += curr);
     }, 0);
-
-    setCartsTotal(total);
+    let dollarUSLocale = Intl.NumberFormat("en-US");
+    setCartsTotal(dollarUSLocale.format(total));
   };
 
   const placeOrder = async () => {
@@ -227,7 +227,10 @@ const AppProvider = ({ children }) => {
       const { status, userDetails } = data;
       if (status === "success") {
         setShowModal(true);
-        setModalContent({ type: 1, text: "Order Completed" });
+        setModalContent({
+          type: 1,
+          text: "Order Completed.... Site is still in beta",
+        });
         setUserDetails(userDetails);
         const carsId = userDetails.carsInCart.map((car) => {
           return car._id.toString();

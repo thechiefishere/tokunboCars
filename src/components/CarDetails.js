@@ -47,7 +47,7 @@ const CarDetails = () => {
         <img src={image} alt={name} />
         <article className="details-article">
           <h1 className="details-article-name">{name}</h1>
-          <h3 className="details-article-price">${price}</h3>
+          <h3 className="details-article-price">N{price}</h3>
           <p className="details-article-desc">
             Lorem ipsum dolor sit amet consectetur adipisicing elit. Aliquid
             enim impedit distinctio officiis repudiandae aliquam illo laudantium

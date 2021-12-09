@@ -29,6 +29,7 @@ const Profile = () => {
     }
 
     getSingleUser();
+    //eslint-disable-next-line
   }, []);
 
   if (!loggedIn) {
