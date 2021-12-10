@@ -183,7 +183,7 @@ body {
 }
 .hero-text-title {
   font-family: "Kaushan Script";
-  font-size: 6.5em;
+  font-size: 4.5em;
 }
 .hero-text-quote {
   font-size: 2.1em;
@@ -510,6 +510,14 @@ body {
 }
 
 @media (min-width: 622px) {
+  .hero-text-title {
+    font-family: "Kaushan Script";
+    font-size: 6.5em;
+  }
+  .hero-text-quote {
+    font-size: 2.1em;
+  }
+
   .home .home-products-cars {
     display: flex;
     justify-content: space-between;
