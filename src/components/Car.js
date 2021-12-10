@@ -15,7 +15,7 @@ const Car = ({ car }) => {
         </button>
       </div>
       <div className="car-detail">
-        <p>{name}</p>
+        <p className="car-name">{name}</p>
         <p>N{price}</p>
       </div>
     </article>

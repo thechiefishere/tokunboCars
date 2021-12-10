@@ -1,3 +1,4 @@
+@import url("https://fonts.googleapis.com/css2?family=Catamaran:wght@400;500;600&family=Kaushan+Script&display=swap");
 * {
   margin: 0;
   padding: 0;
@@ -67,7 +68,8 @@ body {
   background-color: #f0edf1;
   position: relative;
   min-height: 100vh;
-  font-family: Arial, Helvetica, sans-serif;
+  font-family: "Catamaran", sans-serif;
+  font-weight: 400;
 }
 
 .header {
@@ -77,6 +79,11 @@ body {
   padding: 15px 30px;
   font-size: 1.5em;
   background-color: #fff;
+}
+.header-title {
+  font-family: "Kaushan Script";
+  font-weight: 700;
+  font-size: 2.8em;
 }
 .header-cart {
   position: relative;
@@ -108,6 +115,10 @@ body {
 }
 .sidebar-list-item {
   margin: 10px 0px;
+}
+.sidebar-title {
+  font-family: "Kaushan Script";
+  font-weight: 700;
 }
 
 .show-sidebar {
@@ -171,7 +182,8 @@ body {
   color: #360353;
 }
 .hero-text-title {
-  font-size: 4.5em;
+  font-family: "Kaushan Script";
+  font-size: 6.5em;
 }
 .hero-text-quote {
   font-size: 2.1em;
@@ -194,8 +206,10 @@ body {
   text-align: center;
 }
 .home-products-title {
-  margin-top: 35px;
-  margin-bottom: 35px;
+  font-family: "Kaushan Script";
+  font-weight: 700;
+  margin-top: 55px;
+  margin-bottom: 15px;
   font-size: 2em;
 }
 
@@ -218,6 +232,10 @@ body {
 }
 .car-detail p {
   margin: 5px;
+}
+.car-name {
+  font-family: "Kaushan Script";
+  font-weight: 700;
 }
 
 .car:hover .car-img-cont {
@@ -244,7 +262,9 @@ body {
   text-align: center;
 }
 .products-header {
-  font-size: 1.8em;
+  font-family: "Kaushan Script";
+  font-weight: 700;
+  font-size: 2.2em;
   color: #360353;
   margin-top: 65px;
   margin-bottom: 15px;
@@ -256,7 +276,9 @@ body {
   text-align: center;
 }
 .section-header {
-  font-size: 1.8em;
+  font-family: "Kaushan Script";
+  font-weight: 700;
+  font-size: 2.2em;
   color: #360353;
 }
 .section-form {
@@ -331,6 +353,8 @@ body {
 }
 .profile-name {
   color: #b542f8;
+  font-family: "Kaushan Script";
+  font-weight: 700;
   font-size: 2.5em;
 }
 .profile-orders {
@@ -362,6 +386,8 @@ body {
   text-align: left;
 }
 .details-article-name {
+  font-family: "Kaushan Script";
+  font-weight: 700;
   font-size: 2.2em;
 }
 .details-article-price {
@@ -410,6 +436,9 @@ body {
   color: #ff5100;
 }
 .orderpage-title {
+  font-family: "Kaushan Script";
+  font-weight: 700;
+  font-size: 1.2em;
   flex-grow: 1;
 }
 .orderpage-checkout {
@@ -476,7 +505,8 @@ body {
 
 .link {
   color: #ff5100;
-  font-style: italic;
+  font-family: "Kaushan Script";
+  font-weight: 700;
 }
 
 @media (min-width: 622px) {
@@ -487,10 +517,8 @@ body {
   }
 
   .car {
-    width: 45%;
-    margin-left: 0px;
-    margin-right: 0px;
-    margin-top: 20px;
+    width: 43%;
+    margin: 15px;
   }
   .car-img {
     height: 30vw;
@@ -501,8 +529,10 @@ body {
   }
   .products .products-list {
     display: flex;
-    justify-content: space-between;
+    justify-content: normal;
     flex-wrap: wrap;
+    width: 100%;
+    margin: 0 auto;
   }
 
   .section {
@@ -523,7 +553,7 @@ body {
 }
 @media (min-width: 950px) {
   .car {
-    width: 31%;
+    width: 29%;
   }
   .car-img {
     height: 23vw;
@@ -578,7 +608,7 @@ body {
 }
 @media (min-width: 1280px) {
   .car {
-    width: 23%;
+    width: 22%;
   }
   .car-img {
     height: 19vw;
