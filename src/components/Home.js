@@ -8,7 +8,12 @@ const Home = () => {
   const { cars, loading } = useGlobalContext();
 
   if (loading) {
-    return <Loading />;
+    return (
+      <section>
+        <Hero />
+        <Loading />
+      </section>
+    );
   }
 
   const featuredCars = cars.filter((car) => car.featured);
