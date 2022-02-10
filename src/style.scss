@@ -361,8 +361,10 @@ body {
 }
 
 .loading {
-  width: 10%;
-  margin: 0px auto;
+  display: block;
+  width: 30px;
+  height: 30px;
+  margin: 10px auto;
 }
 
 .profile {
