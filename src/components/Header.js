@@ -24,7 +24,9 @@ const Header = () => {
       <NavbarUser />
       <div className="header-cart">
         <FaCartPlus onClick={handleCartClick} className="header-cart-logo" />
-        <p className="header-cart-val">{cartItems.length}</p>
+        <p className="header-cart-val">
+          {cartItems.length > 0 && cartItems.length}
+        </p>
       </div>
     </header>
   );
